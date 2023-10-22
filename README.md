@@ -52,6 +52,4 @@ The script automates the package installation process on your Arch Linux system,
 
 Please ensure that you are running this script with superuser privileges, as some packages may require elevated permissions for installation.
 
-Enjoy your streamlined package installation process with **ArchSwiftSetup**!
-
 
