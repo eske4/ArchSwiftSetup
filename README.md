@@ -23,6 +23,7 @@ You can customize the list of packages you want to install by editing the follow
 
 ```bash
 custom_packages_pacman=(
+ #this are packages from pacman, add your own
  firefox
  steam
  discord
@@ -35,11 +36,12 @@ custom_packages_pacman=(
 )
 
 custom_packages_yay=(
+ #this is packages from aur, add your own
  skypeforlinux-stable-bin
  github-desktop-bin
  code-marketplace
 )
-'''
+```
 
 
 
