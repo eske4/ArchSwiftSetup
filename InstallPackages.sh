@@ -44,6 +44,7 @@ cplusplus_packages=(
 )
 
 custom_packages_pacman=(
+    #this are packages from pacman, add your own
     firefox
     steam
     discord
@@ -56,6 +57,7 @@ custom_packages_pacman=(
 )
 
 custom_packages_yay=(
+    #this are packages from aur, add your own
     skypeforlinux-stable-bin
     github-desktop-bin
     code-marketplace
