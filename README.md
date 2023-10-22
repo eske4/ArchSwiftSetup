@@ -19,7 +19,7 @@ sudo chmod +x InstallPackages.sh
 
 ## Customizing the Package List
 
-You can customize the list of packages you want to install by editing the following sections in the `InstallPackages.sh` script:
+You can customize the list of packages you want to install by editing the following sections in the `InstallPackages.sh` script (located between lines 46 and 64):
 
 ```bash
 custom_packages_pacman=(
