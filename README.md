@@ -50,6 +50,4 @@ custom_packages_yay=(
 
 The script automates the package installation process on your Arch Linux system, saving you time and effort. It's a convenient tool for system setup and maintenance.
 
-Please ensure that you are running this script with superuser privileges, as some packages may require elevated permissions for installation.
-
 
