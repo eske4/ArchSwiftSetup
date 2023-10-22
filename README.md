@@ -2,7 +2,23 @@
 
 ## Overview
 
-**ArchSwiftSetup** is a convenient script designed to simplify the process of installing packages on Arch Linux. With just a few simple steps, you can quickly set up your system with the necessary software packages.
+**ArchSwiftSetup** is a versatile script designed to simplify the process of setting up an Arch Linux system with essential software packages and configurations. With just a few simple steps, you can quickly configure your system, including Bluetooth support, C++ development tools, and more.
+
+## Requirements
+
+- **Arch Linux**: ArchSwiftSetup is intended for use on systems running Arch Linux. It is specifically designed and tested for Arch Linux, and while it may work on other Linux distributions, it's recommended to use it on Arch Linux for the best experience.
+- **KDE Desktop Environment**: This script is optimized for Arch Linux systems with the KDE desktop environment. While it may work on other desktop environments, it's recommended to use it with KDE for the best experience.
+
+## Key Features
+
+- **Bluetooth Support**: ArchSwiftSetup includes configuration for Bluetooth, allowing you to easily enable and manage Bluetooth devices on your system.
+
+- **C++ Development Environment**: If desired, you can set up a C++ development environment with a single prompt. The script installs essential C++ development tools and libraries, making it convenient for software development.
+
+- **Preload Integration**: ArchSwiftSetup integrates with Preload, a program that helps improve system responsiveness by preloading often-used applications into memory.
+
+- **Customizable Package List**: You can easily customize the list of packages you want to install by editing the script to fit your specific requirements.
+
 
 ## Getting Started
 
