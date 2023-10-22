@@ -28,6 +28,7 @@ essential_packages=(
     libreoffice-fresh
     timeshift
     ufw
+    git
 )
 
 aur_packages=(
