@@ -36,7 +36,7 @@ custom_packages_pacman=(
 )
 
 custom_packages_yay=(
- #this is packages from aur, add your own
+ #this are packages from aur, add your own
  skypeforlinux-stable-bin
  github-desktop-bin
  code-marketplace
