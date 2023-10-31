@@ -27,8 +27,8 @@ essential_packages=(
     base-devel
     libreoffice-fresh
     timeshift
-    ufw
     git
+    ufw
 )
 
 aur_packages=(
@@ -41,10 +41,12 @@ cplusplus_packages=(
     cmake
     make
     base-devel
+    zip
+    unzip
+    ninja
 )
 
 custom_packages_pacman=(
-    #this are packages from pacman, add your own
     firefox
     steam
     discord
@@ -57,7 +59,6 @@ custom_packages_pacman=(
 )
 
 custom_packages_yay=(
-    #this are packages from aur, add your own
     skypeforlinux-stable-bin
     github-desktop-bin
     code-marketplace
@@ -72,6 +73,18 @@ pink_echo() {
     echo -e "${BRIGHT_PINK}$1${RESET_COLOR}"
 }
 
+# Function to install packages with the specified package manager (pacman or yay)
+install_packages() {
+    local package_manager=$1
+    shift
+    local packages=("$@")
+    pink_echo "Installing packages using $package_manager"
+    if [ "$package_manager" == "yay" ]; then
+        yay -S --noconfirm "${packages[@]}"
+    else
+        sudo pacman -S --noconfirm "${packages[@]}"
+    fi
+}
 
 # Update and upgrade the system
 sudo pacman -Syu --noconfirm
@@ -88,43 +101,38 @@ fi
 sudo pacman -Sy --noconfirm
 
 # Install essential packages using pacman
-pink_echo  "Installing essential packages"
-sudo pacman -S --noconfirm "${essential_packages[@]}"
-pink_echo  "Installing custom packages for pacman"
-sudo pacman -S --noconfirm "${custom_packages_pacman[@]}"
+install_packages "pacman" "${essential_packages[@]}"
+pink_echo "Installing custom packages for pacman"
+install_packages "pacman" "${custom_packages_pacman[@]}"
 
 # Load Bluetooth module and enable the service
 pink_echo "Setting up Bluetooth..."
 sudo modprobe btusb
-sudo systemctl enable bluetooth
-sudo systemctl start bluetooth
+sudo systemctl enable --now bluetooth
 
 # Install yay using git
-pink_echo  "Installing yay package manager"
+pink_echo "Installing yay package manager"
 yay_dir="/tmp/yay"
 git clone https://aur.archlinux.org/yay.git "$yay_dir"
-cd "$yay_dir"
+cd "$yay_dir" || exit
 makepkg -si --noconfirm
 
-# Install AUR packages using ya
+# Install AUR packages using yay
 pink_echo "Installing essentials through yay"
-yay -S --noconfirm "${aur_packages[@]}"
+install_packages "yay" "${aur_packages[@]}"
 
 # Install custom packages using yay
 pink_echo "Installing custom packages for yay"
-yay -S --noconfirm "${custom_packages_yay[@]}"
+install_packages "yay" "${custom_packages_yay[@]}"
 
 # Remove downloaded files
 rm -rf "$yay_dir"
-
-# Start Guake
-guake &
 
 # Set up a C++ development environment if desired
 read -p "Do you want to set up a C++ development environment? (yes[Y]/no[N]): " response
 response="${response,,}"  # Convert to lowercase for case-insensitive comparison
 if [[ "$response" == "yes" || "$response" == "y" ]]; then
-    sudo pacman -S --noconfirm "${cplusplus_packages[@]}"
+    install_packages "pacman" "${cplusplus_packages[@]}"
     pink_echo "C++ development environment set up."
 else
     pink_echo "C++ development environment not set up."
@@ -134,22 +142,23 @@ fi
 read -p "Do you have an Intel CPU? (yes[Y]/no[N]): " response
 response="${response,,}"
 if [[ "$response" == "yes" || "$response" == "y" ]]; then
-    sudo pacman -S --noconfirm intel-ucode
+    install_packages "pacman" "intel-ucode"
 fi
 
 # Install microcode for AMD CPUs if desired
 read -p "Do you have an AMD CPU? (yes[Y]/no[N]): " response
 response="${response,,}"
 if [[ "$response" == "yes" || "$response" == "y" ]]; then
-    sudo pacman -S --noconfirm amd-ucode
+    install_packages "pacman" "amd-ucode"
 fi
 
 cd "$current_dir"
+
+sudo cp /usr/share/guake/autostart-guake.desktop /etc/xdg/autostart/autostart-guake.desktop
 
 # Update GRUB configuration
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 # Enable UFW and Preload services
-sudo systemctl enable ufw
-sudo systemctl enable preload
-sudo systemctl start preload
+sudo systemctl enable --now ufw
+sudo systemctl enable --now preload
