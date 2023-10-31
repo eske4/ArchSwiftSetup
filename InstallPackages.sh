@@ -119,6 +119,10 @@ rm -rf "$yay_dir"
 install_microcode "intel"
 install_microcode "amd"
 
+# Adding Guake to autostart
+colored_echo "$BRIGHT_PINK" "Adding Guake to autostart"
+sudo cp /usr/share/guake/autostart-guake.desktop /etc/xdg/autostart/autostart-guake.desktop
+
 # Update GRUB configuration
 colored_echo "$BRIGHT_PINK" "Updating GRUB configuration"
 sudo grub-mkconfig -o /boot/grub/grub.cfg
