@@ -56,12 +56,17 @@ custom_packages_pacman=(
     krita
     python
     vlc
+    gamemode
+    wine
+    wine-mono
+    wine-gecko
 )
 
 custom_packages_yay=(
     skypeforlinux-stable-bin
     github-desktop-bin
     code-marketplace
+    protonup-qt
 )
 
 
