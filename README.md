@@ -26,12 +26,15 @@ To run this script, follow these easy steps:
 
 1. **Make the Script Executable**: Open your terminal and navigate to the directory where the script is located. Then, make the script executable by running the following command:
 
+```
 sudo chmod +x InstallPackages.sh
-
+```
 
 2. **Run the Script**: Once the script is executable, you can execute it by running:
 
+```
 ./InstallPackages.sh
+```
 
 ## Customizing the Package List
 
