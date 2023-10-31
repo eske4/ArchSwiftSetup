@@ -13,8 +13,6 @@
 
 - **Bluetooth Support**: ArchSwiftSetup includes configuration for Bluetooth, allowing you to easily enable and manage Bluetooth devices on your system.
 
-- **C++ Development Environment**: If desired, you can set up a C++ development environment with a single prompt. The script installs essential C++ development tools and libraries, making it convenient for software development.
-
 - **Preload Integration**: ArchSwiftSetup integrates with Preload, a program that helps improve system responsiveness by preloading often-used applications into memory.
 
 - **Customizable Package List**: You can easily customize the list of packages you want to install by editing the script to fit your specific requirements.
@@ -41,21 +39,11 @@ You can customize the list of packages you want to install by editing the follow
 custom_packages_pacman=(
  #this are packages from pacman, add your own
  firefox
- steam
- discord
- neofetch
- code
- blender
- krita
- python
- vlc
 )
 
 custom_packages_yay=(
  #this are packages from aur, add your own
- skypeforlinux-stable-bin
  github-desktop-bin
- code-marketplace
 )
 ```
 
