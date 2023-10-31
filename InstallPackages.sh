@@ -131,3 +131,5 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 colored_echo "$BRIGHT_PINK" "Enabling UFW and Preload services"
 sudo systemctl enable --now ufw
 sudo systemctl enable --now preload
+
+guake
